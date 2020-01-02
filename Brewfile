@@ -3,6 +3,7 @@ tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
 tap 'homebrew/bundle'
+tap 'sambadevi/powerlevel9k'
 
 # Binaries
 brew 'bash' # Latest Bash version
@@ -19,8 +20,12 @@ brew 'trash' # Manage the Trash bin
 brew 'tree' # List directories in a tree structure
 brew 'vim'
 brew 'zlib' # Needed for Memcached
+brew 'powerlevel9k' # https://github.com/Powerlevel9k/powerlevel9k/wiki/Install-Instructions#macos-with-homebrew
+brew 'zsh-syntax-highlighting'
+brew 'z'
 
 # Apps
+cask 'iterm2'
 cask 'lastpass'
 cask 'docker'
 cask 'firefox'
@@ -30,6 +35,7 @@ cask 'atom'
 cask 'dropbox'
 cask 'keybase'
 cask 'visual-studio-code'
+cask 'avg-antivirus'
 
 # Fonts
 cask 'font-source-code-pro-for-powerline'
