@@ -15,6 +15,20 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
+# Powerline9K config
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator dir dir_writable vcs)
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=".."
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_last"
+#POWERLEVEL9K_DISABLE_RPROMPT=true
+
+POWERLEVEL9K_DIR_FOREGROUND='white'
+POWERLEVEL9K_DIR_BACKGROUND='blue'
+POWERLEVEL9K_DIR_BOLD=true
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='white'
+
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/

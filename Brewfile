@@ -35,7 +35,6 @@ cask 'atom'
 cask 'dropbox'
 cask 'keybase'
 cask 'visual-studio-code'
-cask 'avg-antivirus'
 
 # Fonts
 cask 'font-source-code-pro-for-powerline'
