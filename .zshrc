@@ -120,3 +120,6 @@ source $ZSH/oh-my-zsh.sh
 # -- Load SDKMAN
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Avoid GPG issue https://github.com/keybase/keybase-issues/issues/1712#issuecomment-310481352
+export GPG_TTY=$(tty)
