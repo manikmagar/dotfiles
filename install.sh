@@ -43,3 +43,8 @@ else
 fi
 
 SOURCE $HOME/.zshrc
+
+## Configure VScode
+code --install-extension vscjava.vscode-java-pack 
+code --install-extension joaompinto.asciidoctor-vscode
+code --install-extension redhat.vscode-quarkus
