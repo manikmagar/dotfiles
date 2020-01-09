@@ -7,3 +7,4 @@ weather() { curl -4 wttr.in/${1:-delaware} }
 alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 alias c="clear"
 alias zbundle="antibody bundle < $DOTFILES/zsh_plugins.txt > $DOTFILES/zsh_plugins.sh"
+alias brewup="brew update && brew upgrade && brew cleanup"

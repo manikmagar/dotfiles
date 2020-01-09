@@ -29,22 +29,23 @@ brew bundle
 rm -rf $HOME/.zshrc
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 # Install theme - https://github.com/Powerlevel9k/powerlevel9k/wiki/Install-Instructions#option-2-install-for-oh-my-zsh
-git clone https://github.com/Powerlevel9k/powerlevel9k.git ~/.dotfiles/themes/powerlevel9k
+if [[ ! -d ~/.dotfiles/themes/powerlevel9k ]] ; then
+  git clone https://github.com/Powerlevel9k/powerlevel9k.git ~/.dotfiles/themes/powerlevel9k
+else 
+  echo "~/.dotfiles/themes/powerlevel9k already exists"
+fi
 
 rm -rf $HOME/.mackup.cfg
 # Symlink the Mackup config file to the home directory
 ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
 
-if hash sdk 2>/dev/null; then
-  echo "Sdkman is already installed!"
-else
-  echo "Installing Sdkman..."
-  yes '' | sh sdkman.sh
-fi
+sh sdkman.sh
 
-SOURCE $HOME/.zshrc
+source $HOME/.zshrc
 
 ## Configure VScode
 code --install-extension vscjava.vscode-java-pack 
 code --install-extension joaompinto.asciidoctor-vscode
 code --install-extension redhat.vscode-quarkus
+code --install-extension eamodio.gitlens
+code --install-extension mushan.vscode-paste-image

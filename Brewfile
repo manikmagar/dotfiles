@@ -22,6 +22,7 @@ brew 'vim'
 brew 'zlib' # Needed for Memcached
 brew 'powerlevel9k' # https://github.com/Powerlevel9k/powerlevel9k/wiki/Install-Instructions#macos-with-homebrew
 brew 'zsh-syntax-highlighting'
+brew 'zsh-autosuggestions'
 brew 'z'
  # Configure gpg: Start
 brew 'gnupg' 
