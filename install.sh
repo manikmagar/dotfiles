@@ -34,6 +34,11 @@ if [[ ! -d ~/.dotfiles/themes/powerlevel9k ]] ; then
 else 
   echo "~/.dotfiles/themes/powerlevel9k already exists"
 fi
+if [[ ! -d ~/.dotfiles/plugins/zsh-completions ]] ; then
+  git clone https://github.com/zsh-users/zsh-completions ~/.dotfiles/plugins/zsh-completions
+else 
+  echo "~/.dotfiles/plugins/zsh-completions already exists"
+fi
 
 rm -rf $HOME/.mackup.cfg
 # Symlink the Mackup config file to the home directory
@@ -49,3 +54,4 @@ code --install-extension joaompinto.asciidoctor-vscode
 code --install-extension redhat.vscode-quarkus
 code --install-extension eamodio.gitlens
 code --install-extension mushan.vscode-paste-image
+code --install-extension coenraads.bracket-pair-colorizer

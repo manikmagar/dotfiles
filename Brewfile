@@ -4,6 +4,7 @@ tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
 tap 'homebrew/bundle'
 tap 'sambadevi/powerlevel9k'
+tap 'AdoptOpenJDK/openjdk'
 
 # Binaries
 brew 'bash' # Latest Bash version
@@ -40,6 +41,10 @@ cask 'atom'
 cask 'dropbox'
 cask 'keybase'
 cask 'visual-studio-code'
+cask 'adoptopenjdk'
+cask 'adoptopenjdk8'
+cask 'adoptopenjdk11'
+cask 'adoptopenjdk14'
 
 # Fonts
 cask 'font-source-code-pro-for-powerline'

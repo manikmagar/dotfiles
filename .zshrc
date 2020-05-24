@@ -87,7 +87,10 @@ ZSH_CUSTOM=$DOTFILES
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker mvn vscode common-aliases kubectl z)
+plugins=(git docker mvn vscode common-aliases kubectl z zsh-completions)
+autoload -U compinit && compinit
+
+setopt HIST_IGNORE_SPACE
 
 source $ZSH/oh-my-zsh.sh
 
@@ -126,3 +129,13 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # Avoid GPG issue https://github.com/keybase/keybase-issues/issues/1712#issuecomment-310481352
 export GPG_TTY=$(tty)
+source <(jbang --completion)
+
+# https://github.com/AdoptOpenJDK/homebrew-openjdk#switch-between-different-jdk-versions
+# To change versions, run `jdk 1.8` or `jdk 11` or `jdk 14` like commands.
+jdk() {
+        version=$1
+        export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+        java -version
+ }
+ 
