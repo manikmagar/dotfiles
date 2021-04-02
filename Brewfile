@@ -29,6 +29,9 @@ brew 'z'
 brew 'gnupg' 
 brew 'pinentry-mac'
 # Configure gpg: End
+# https://develotters.com/posts/terminal-fun-basic-utils/
+brew 'exa'
+brew 'git-delta'
 
 # Apps
 cask 'iterm2'

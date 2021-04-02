@@ -8,3 +8,7 @@ alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 alias c="clear"
 alias zbundle="antibody bundle < $DOTFILES/zsh_plugins.txt > $DOTFILES/zsh_plugins.sh"
 alias brewup="brew update && brew upgrade && brew cleanup"
+#alias gitbrdel="git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d"
+alias jv='java -version'
+alias la='ls -alh --git'
+alias ls='exa'

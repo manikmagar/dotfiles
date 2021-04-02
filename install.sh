@@ -46,6 +46,13 @@ ln -s $HOME/.dotfiles/.mackup.cfg $HOME/.mackup.cfg
 
 sh sdkman.sh
 
+# Configure git delta
+echo "[core]
+    pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
+
+[interactive]
+    diffFilter = delta --color-only" >> ~/.gitconfig
+
 source $HOME/.zshrc
 
 ## Configure VScode
