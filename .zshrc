@@ -5,7 +5,7 @@ export DOTFILES=$HOME/.dotfiles
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/manik/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 POWERLEVEL9K_MODE='nerdfont-complete'
 
@@ -13,20 +13,8 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Powerline9K config
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator dir dir_writable vcs)
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_DELIMITER=".."
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_last"
-#POWERLEVEL9K_DISABLE_RPROMPT=true
-
-POWERLEVEL9K_DIR_FOREGROUND='white'
-POWERLEVEL9K_DIR_BACKGROUND='blue'
-POWERLEVEL9K_DIR_BOLD=true
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='white'
 
 
 # Set list of themes to pick from when loading at random
@@ -144,4 +132,18 @@ jdk() {
         java -version
  }
 
+k8sforward() {
+export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=mule-app,app.kubernetes.io/instance=mule-app" -o jsonpath="{.items[0].metadata.name}")
+  export CONTAINER_PORT=$(kubectl get pod --namespace default $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+  echo "Visit http://127.0.0.1:8080 to use your application"
+  kubectl --namespace default port-forward $POD_NAME 8080:$CONTAINER_PORT
+}
 
+secure-env-token() {
+  KEYNAME=$1
+  security add-generic-password -a "$USER" -s "${KEYNAME}" -w
+  echo "export $KEYNAME=`$(security find-generic-password -s $KEYNAME -w)`"
+}
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
