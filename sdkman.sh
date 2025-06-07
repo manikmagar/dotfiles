@@ -12,3 +12,11 @@ fi
 sdk install maven
 # https://jbake.org/
 sdk install jbake
+sdk install gradle
+sdk install jreleaser
+sdk install mvnd
+sdk install jbang
+sdk install java 21.0.2-tem
+sdk install java 17.0.9-tem
+sdk install java 8.0.382-tem
+sdk default java 21.0.2-tem

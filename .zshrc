@@ -1,3 +1,18 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Load the shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+for file in ~/.{path,exports,aliases,functions,extra}; do
+	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
+
     # Path to your dotfiles.
 export DOTFILES=$HOME/.dotfiles
 
@@ -14,7 +29,7 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 
 # Set list of themes to pick from when loading at random
@@ -75,11 +90,11 @@ ZSH_CUSTOM=$DOTFILES
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker vscode common-aliases kubectl z zsh-completions)
+plugins=(git docker vscode common-aliases kubectl mvn z)
 
-FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fpath+="${ZSH_CUSTOM:-"$ZSH/custom"}/plugins/zsh-completions/src"
+fpath+=$(brew --prefix)/share/zsh/site-functions:$FPATH
 
-autoload -U compinit && compinit
 
 setopt HIST_IGNORE_SPACE
 
@@ -111,17 +126,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # -- Load SDKMAN
-export SDKMAN_DIR="$HOME/.sdkman"
+
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 export PATH="/usr/local/opt/jbang/bin:$PATH"
 
-# Avoid GPG issue https://github.com/keybase/keybase-issues/issues/1712#issuecomment-310481352
-export GPG_TTY=$(tty)
 source <(jbang completion)
 
 # https://github.com/AdoptOpenJDK/homebrew-openjdk#switch-between-different-jdk-versions
@@ -144,6 +157,8 @@ secure-env-token() {
   security add-generic-password -a "$USER" -s "${KEYNAME}" -w
   echo "export $KEYNAME=`$(security find-generic-password -s $KEYNAME -w)`"
 }
+ #To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+

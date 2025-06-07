@@ -21,13 +21,12 @@ brew upgrade
 echo "Cleaning up your Homebrew installation..."
 brew cleanup
 
-# Install all our dependencies with bundle (See Brewfile)
-brew tap homebrew/bundle
-brew bundle
+sh ./brew.sh
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
 rm -rf $HOME/.zshrc
 ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
+ln -s $HOME/.dotfiles/.p10k.zsh $HOME/.p10k.zsh
 # Install theme - https://github.com/Powerlevel9k/powerlevel9k/wiki/Install-Instructions#option-2-install-for-oh-my-zsh
 if [[ ! -d ~/.dotfiles/themes/powerlevel9k ]] ; then
   git clone https://github.com/Powerlevel9k/powerlevel9k.git ~/.dotfiles/themes/powerlevel9k
@@ -56,9 +55,9 @@ echo "[core]
 source $HOME/.zshrc
 
 ## Configure VScode
-code --install-extension vscjava.vscode-java-pack 
-code --install-extension joaompinto.asciidoctor-vscode
-code --install-extension redhat.vscode-quarkus
+code --install-extension "redhat.java" 
+code --install-extension "github.copilot"
+code --install-extension "github.copilot-chat"
 code --install-extension eamodio.gitlens
-code --install-extension mushan.vscode-paste-image
+code --install-extension "vscjava.vscode-maven"
 code --install-extension coenraads.bracket-pair-colorizer
